@@ -1,0 +1,22 @@
+{
+  "name": "react-native-zoombox",
+  "version": "0.1.0",
+  "description": "Popover content with zoom animation for react native",
+  "main": "zoom-box.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/suffle/react-native-zoombox.git"
+  },
+  "keywords": [
+    "react-native"
+  ],
+  "author": "Sebastian Flor",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/suffle/react-native-zoombox/issues"
+  },
+  "homepage": "https://github.com/suffle/react-native-zoombox#readme"
+}
