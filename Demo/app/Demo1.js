@@ -6,9 +6,11 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   TouchableHighlight,
+  Image,
   Text,
   View
 } from 'react-native';
+import ZoomBox from 'react-native-zoombox';
 
 class Demo1 extends Component {
   _goBack() {
@@ -18,9 +20,20 @@ class Demo1 extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Demo 1</Text>
+        <ZoomBox
+          style = {styles.zoomBox}
+          backgroundOpacity = {0.5}
+          underlayColor = '#0f0'
+          hideStatusBar = {false}>
+          <Image
+            source = {{uri: 'https://placehold.it/800x600'}}
+            resizeMode = 'contain'
+            style = {styles.contain} />
+        </ZoomBox>
+
         <TouchableHighlight
-          onPress = {() => this._goBack()}>
+          onPress = {() => this._goBack()}
+          style = {{flex: 1}}>
             <Text>Go Back</Text>
           </TouchableHighlight>
       </View>
@@ -31,19 +44,27 @@ class Demo1 extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: '#F5FCFF',
+    justifyContent: 'center',
+    marginTop: 20
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+
+  scene: {
+  flex: 1,
+  padding: 25
+},
+
+row: {
+  flex: 1,
+  flexDirection: 'row'
+},
+
+  zoomBox: {
+    flex: 1,
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+
+  contain: {
+    flex: 1
   },
 });
 

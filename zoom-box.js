@@ -11,7 +11,6 @@ import {
   StyleSheet
 } from 'react-native';
 import Overlay from './overlay';
-import TimerMixin from 'react-timer-mixin';
 
 class ZoomBox extends Component {
 
