@@ -1,5 +1,5 @@
 # react-native-zoombox
-A zoomable Box for React Native
+A zoomable Box for React Native (not released yet)
 
 ## Installation
 ```
@@ -21,3 +21,40 @@ class ZoomBoxExample extends React.Component {
     );
   }
 }
+```
+
+## Properties
+| Property | Type | Default | Description |
+| --- | --- | --- | --- |
+| `backgroundColor` | string | #000 | Background color of  modal|
+| `backgroundOpacity` | float | 1 | Opacity of  modal background|
+| `underlayColor` | string | #fff | Underlay color of touchable |
+| `hideStatusBar` | boolean | true | Fullscreen modal with hidden status bar|
+| `swipeToClose` | boolean | false | Close modal on vertical or horizontal swipe (WIP works, but opacity does not change in both dimension) |
+| `customHeader` | function(closeAction) | NULL | Function, that returns markup for a custom header with invokes the closeAction |
+| `customContent` | function | children | Use different content in modal |
+| `customAnimation` | function(startValue, endValue) | NULL | Function, that returns custom animation for opening/closing the modal. Default: `Animated.spring(startValue, {toValue: endValue, tension: 30, friction: 7})` |
+
+## Example
+For more examples check the demo folder
+### Custom header function
+This is an example for a custom header:
+```javascript
+_customHeader(closeModal) {
+  return (
+      <TouchableHighlight onPress = {closeModal}>
+        <Text style = {styles.closeButton}>Close</Text>
+      </TouchableHighlight>
+  )
+}
+```
+### Custom animation function
+This is an example for a custom animation:
+```javascript
+_customAnimation(startValue, endValue) {
+  return(Animated.timing(
+    startValue,
+    {toValue: endValue, duration: 1000}
+  ))
+}
+```
