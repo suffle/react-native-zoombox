@@ -20,16 +20,19 @@ class Home extends Component {
     return (
       <View style={styles.container}>
         <TouchableHighlight
+          underlayColor = '#fff'
           onPress = {() => this._navigate('demo1')}>
           <Text>Demo 1</Text>
         </TouchableHighlight>
 
         <TouchableHighlight
+          underlayColor = '#fff'
           onPress = {() => this._navigate('demo2')}>
           <Text>Demo 2</Text>
         </TouchableHighlight>
 
         <TouchableHighlight
+          underlayColor = '#fff'
           onPress = {() => this._navigate('demo3')}>
           <Text>Demo 3</Text>
         </TouchableHighlight>
