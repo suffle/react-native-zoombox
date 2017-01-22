@@ -11,6 +11,7 @@ import {
   TouchableOpacity,
   Text,
   Modal,
+  Platform,
   StatusBar,
   StyleSheet,
   PanResponder
@@ -18,8 +19,9 @@ import {
 
 const VIEWPORT_HEIGHT = Dimensions.get('window').height,
       VIEWPORT_WIDTH = Dimensions.get('window').width,
-      STATUSBAR_HEIGHT = 20,
-      DRAG_CLOSE_THRESHOLD = 150
+      STATUSBAR_OFFSET = Platform.OS === 'android' ? -25 : 0,
+      STATUSBAR_HEIGHT = Platform.OS === 'ios' ? 20: 0,
+      DRAG_CLOSE_THRESHOLD = 150;
 
 class Overlay extends Component {
   constructor(props) {
@@ -110,11 +112,12 @@ class Overlay extends Component {
 
     this.state.pan.setValue(0, 0);
     this.setState(newState);
-    this.props.getAnimation(this.state.openVal, 1).start(() => this.setState({ isAnimating: false }))
+    this.props.getAnimation(this.state.openVal, 1).start(() => {
+      this.setState({ isAnimating: false })
+    })
   }
 
   closeModal() {
-    StatusBar.setHidden(false, 'fade');
     this.setState({ isAnimating: true });
     if (this.props.customContent) {
           this.props.onCloseBefore();
@@ -122,6 +125,7 @@ class Overlay extends Component {
 
     this.props.getAnimation(this.state.openVal, 0).start(() => {
       this.setState({ isAnimating: false });
+      StatusBar.setHidden(false, 'fade');
       this.props.onCloseAfter();
     })
   }
@@ -130,8 +134,8 @@ class Overlay extends Component {
     let backgroundStyles = [
       styles.background,
       {
-        top: this.props.hideStatusBar ? 0 : STATUSBAR_HEIGHT,
-        height: this.props.hideStatusBar ? VIEWPORT_HEIGHT : VIEWPORT_HEIGHT - STATUSBAR_HEIGHT
+        top: this.props.hideStatusBar ? STATUSBAR_OFFSET : STATUSBAR_HEIGHT,
+        height: this.props.hideStatusBar ? VIEWPORT_HEIGHT - STATUSBAR_OFFSET : VIEWPORT_HEIGHT - STATUSBAR_HEIGHT
       },
       { backgroundColor: this.props.backgroundColor },
       additionalStyles
@@ -145,7 +149,7 @@ class Overlay extends Component {
   getHeaderView(additionalStyles) {
     let headerStyles = [
           styles.header,
-          { top: this.props.hideStatusBar ? 0 : STATUSBAR_HEIGHT },
+          { top: this.props.hideStatusBar ? STATUSBAR_OFFSET : STATUSBAR_HEIGHT },
           additionalStyles
         ]
 
@@ -213,7 +217,7 @@ class Overlay extends Component {
 
         top: openVal.interpolate({
           inputRange: [0, 1],
-          outputRange: [origin.posY, target.posY]
+          outputRange: [origin.posY + STATUSBAR_OFFSET, target.posY + STATUSBAR_OFFSET]
         }),
 
         width: openVal.interpolate({

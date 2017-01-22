@@ -29,7 +29,7 @@ class ZoomBoxExample extends React.Component {
 | `backgroundColor` | string | #000 | Background color of  modal|
 | `backgroundOpacity` | float | 1 | Opacity of  modal background|
 | `underlayColor` | string | #fff | Underlay color of touchable |
-| `hideStatusBar` | boolean | true | Fullscreen modal with hidden status bar|
+| `hideStatusBar` | boolean | true | Fullscreen modal with hidden status bar (There is a Bug on Android with Modals, where a hidden StatusBar is not working correctly, see: [RN Issue #7474](https://github.com/facebook/react-native/issues/7474))|
 | `swipeToClose` | boolean | false | Close modal on vertical or horizontal swipe (WIP works, but opacity does not change in both dimension) |
 | `customHeader` | function(closeAction) | NULL | Function, that returns markup for a custom header with invokes the closeAction |
 | `customContent` | function | children | Use different content in modal |
