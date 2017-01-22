@@ -52,9 +52,11 @@ _customHeader(closeModal) {
 This is an example for a custom animation:
 ```javascript
 _customAnimation(startValue, endValue) {
-  return(Animated.timing(
-    startValue,
-    {toValue: endValue, duration: 1000}
-  ))
+  return (
+    Animated.timing(
+      startValue,
+      {toValue: endValue, duration: 1000}
+    )
+  )
 }
 ```
