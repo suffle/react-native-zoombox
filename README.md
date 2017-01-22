@@ -1,5 +1,5 @@
 # react-native-zoombox
-A zoomable Box for React Native (not released yet)
+A zoomable Box for React Native
 
 ## Installation
 ```

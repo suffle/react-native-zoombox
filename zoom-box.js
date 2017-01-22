@@ -131,4 +131,4 @@ ZoomBox.defaultProps = {
   swipeToClose: false
 }
 
-export default ZoomBox;
+module.exports = ZoomBox;
