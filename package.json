@@ -1,6 +1,6 @@
 {
   "name": "react-native-zoombox",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Popover content with zoom animation for react native",
   "main": "zoom-box.js",
   "scripts": {
