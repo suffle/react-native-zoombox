@@ -41,7 +41,7 @@ class ZoomBox extends Component {
     } else if (this.props.inModalProps) {
       return cloneElement(
         Children.only(this.props.children),
-        this.props.openProps
+        this.props.inModalProps
       )
     } else {
       return this.props.children;
