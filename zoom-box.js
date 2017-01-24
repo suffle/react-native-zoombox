@@ -38,6 +38,11 @@ class ZoomBox extends Component {
   getContent() {
     if (this.props.customContent) {
       return this.props.customContent();
+    } else if (this.props.inModalProps) {
+      return cloneElement(
+        Children.only(this.props.children),
+        this.props.openProps
+      )
     } else {
       return this.props.children;
     }
@@ -128,7 +133,8 @@ ZoomBox.defaultProps = {
   hideStatusBar: true,
   getCustomHeader: null,
   underlayColor: 'transparent',
-  swipeToClose: false
+  swipeToClose: false,
+  inModalProps: null
 }
 
 module.exports = ZoomBox;

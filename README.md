@@ -34,6 +34,7 @@ class ZoomBoxExample extends React.Component {
 | `customHeader` | function(closeAction) | NULL | Function, that returns markup for a custom header with invokes the closeAction |
 | `customContent` | function | children | Use different content in modal |
 | `customAnimation` | function(startValue, endValue) | NULL | Function, that returns custom animation for opening/closing the modal. Default: `Animated.spring(startValue, {toValue: endValue, tension: 30, friction: 7})` |
+| `inModalProps` | object | null | Set different properties to content when in modal |
 
 ## Example
 For more examples check the demo folder
